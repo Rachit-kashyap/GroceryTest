@@ -20,10 +20,17 @@ await connectDB();
 await connectCloudinary();
 
 // Simple CORS configuration
+import cors from "cors";
+
 app.use(cors({
-  origin: 'https://mellow-clafoutis-9964d1.netlify.app',
+  origin: [
+    "https://mellow-clafoutis-9964d1.netlify.app"
+  ],
   credentials: true
 }));
+
+app.options("*", cors()); 
+
 
 // Middleware
 app.use(express.json());
