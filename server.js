@@ -20,7 +20,6 @@ await connectDB();
 await connectCloudinary();
 
 // Simple CORS configuration
-import cors from "cors";
 
 app.use(cors({
   origin: [
