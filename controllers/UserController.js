@@ -40,12 +40,20 @@ export const registerUser = async (req, res) => {
     });
 
     // 6. Set cookie
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: process.env.NODE_ENV === "production",
+    //   sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+    //   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    // });
+
+
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    });
+  httpOnly: true,
+  secure: true,        // HTTPS mandatory
+  sameSite: "none",   // cross-site cookie
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
 
     // 7. Response
     return res.json({
@@ -99,12 +107,20 @@ export const loginUser = async (req, res) => {
     });
 
     // 5. Set cookie
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: process.env.NODE_ENV === "production",
+    //   sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+    //   maxAge: 7 * 24 * 60 * 60 * 1000,
+    // });
+
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+  httpOnly: true,
+  secure: true,        // HTTPS mandatory
+  sameSite: "none",   // cross-site cookie
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
+
 
     // 6. Response
     return res.json({
