@@ -24,7 +24,7 @@ app.use(cors({
   origin: [
   
    
-    'http://localhost:5173'
+    'https://mellow-clafoutis-9964d1.netlify.app/'
   ],
   credentials: true
 }));
